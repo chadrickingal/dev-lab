@@ -2,127 +2,170 @@
 # Task Tracker CLI using JSON as Database
 #-------------------------------------------
 
-from datetime import datetime, date
+from datetime import datetime
 import json, shlex
 
-# Generated ID function
-def idGenerated():
 
-    # Load the users json file get it using the variable users
-    with open("users.json", "r") as file:
-        users = json.load(file)
+class DateTimeFromatted:
 
-    # Check if users is empty
+    # Get a Date and Time Realtime and formatted
+    @staticmethod
+    def currentDate():
+        return datetime.now().strftime("%B %d, %Y")
+
+    @staticmethod
+    def currentTime():
+        return datetime.now().strftime("%H:%M:%S %p")
+
+def generatedID():
+    db = DataBase()
+    users = db.load_db()
+
     if not users:
         return 1
 
-    # Get the highest number using max and add into 1
-    return max(user["id"] for user in users) + 1 
+    return max(user["id"] for user in users) + 1
 
 
-# Create Task and Insert it in JSON file
-def createTask(desc, status = "todo"):
+class DataBase:
 
-    # Get a Date and Time Realtime and formatted
-    dateTimeNow = datetime.now()
-    dateNow = dateTimeNow.strftime("%B %d, %Y")
-    timeNow = dateTimeNow.strftime("%H-%M-%S %p")
+    def load_db(self):
+        with open("users.json", "r") as file:
+            users = json.load(file)
+            return users
 
-    # Create a dictionary as insert to JSON containing data 
-    task = {
-        "id" :  idGenerated(),
-        "description" : desc,
-        "status" : status,
-        "created_at" : f"{dateNow} | Time: {timeNow}",
-        "updated_at" : f"{dateNow} | Time: {timeNow}",
-    } 
+    def addToDatabase(self, item):
+        with open("users.json", "w") as file:
+            json.dump(item, file, indent=4)
 
-    # Load JSON to get the data in JSON file 
-    with open("users.json", "r") as file:
-        users = json.load(file)
+class Task:
+    # CREATE A INSTANCE ATTRIBUTE
+    def __init__(self):
+        self.storage = DataBase()
+        self.tasks = self.storage.load_db()
 
-    # insert new task on users using append and containing data from task dictionary
-    users.append(task)
+#---------------------------------------------------------------------
+# Create a New Task
+#---------------------------------------------------------------------
+    def addTask(self, desc, status = "Todo"):
 
-    # write the python data to JSON file
-    with open("users.json", "w") as file:
-        json.dump(users, file, indent=4)
-
-# Delete Task in JSON file
-def deleteTask(id):
-
-    with open("users.json", "r") as file: 
-        users = json.load(file)
-
-    users = [user for user in users if user["id"] != id]
-
-    with open("users.json", "w") as file:
-        json.dump(users, file, indent=4)
-
-
-# Update the spesific task
-def updateTask(id, desc):
-
-    with open("users.json", "r") as file:
-        users = json.load(file)
-
-    for user in users:
-        if user["id"] == id:
-            user["description"] = desc
-
-    with open("users.json", "w") as file:
-        json.dump(users, file, indent=4)
-
-# Show all task list
-def showAllTask():
-    with open("users.json", "r") as file:
-        users = json.load(file)
-
-    for user in users:
-        print(user["description"])
-
-# show all todo status list
-def showlists(request):
-    with open("users.json", "r") as file:
-        users = json.load(file)
-
-        for user in users:
-            if user["status"] == request:
-                print(user)
-            if request == "list":
-                print(user["description"])
-
-# createTask("hettt")
-
-# deleteTask(1)
-
-# updateTask(2, "hello")
-
-# showlists("list")
+        task = {
+            "id": generatedID(),
+            "description": desc,
+            "status" : status,
+            "created_at" : {
+                "date" : f"Date: {DateTimeFromatted.currentDate()}",
+                "time" : f"Time: {DateTimeFromatted.currentTime()}"
+            },
+            "updated_at" :{
+                "date" : f"Date: {DateTimeFromatted.currentDate()}",
+                "time" : f"Time: {DateTimeFromatted.currentTime()}"
+            },
+        }
+        
+        self.tasks.append(task)
+        self.storage.addToDatabase(self.tasks)
 
 
+#---------------------------------------------------------------------
+# UPDATE TASK USING ID 
+#---------------------------------------------------------------------
+    def updateTask(self, id, desc):
+
+        for task in self.tasks:
+            if task["id"] == id:
+
+                task["updated_at"] = {
+                    "date" : f"Date: {DateTimeFromatted.currentDate()}",
+                    "time" : f"Time: {DateTimeFromatted.currentTime()}"
+                    }
+                task["description"] = desc
+                break
+        self.storage.addToDatabase(self.tasks)
+
+#---------------------------------------------------------------------
+# UPDATE TASK STATUS USING ID 
+#---------------------------------------------------------------------
+    def updateStatusTask(self, id, status):
+
+        for task in self.tasks:
+            if task["id"] == id:
+    
+                task["updated_at"] = {
+                    "date" : f"Date: {DateTimeFromatted.currentDate()}",
+                    "time" : f"Time: {DateTimeFromatted.currentTime()}"
+                    }
+                task["status"] = status
+                break
+
+        self.storage.addToDatabase(self.tasks)
+
+#---------------------------------------------------------------------
+# DELETE TASK USING ID 
+#---------------------------------------------------------------------
+    def deleteTask(self, id):
+
+        # Modify (Edit)
+        self.tasks = [task for task in self.tasks if task["id"] != id]
+        # Save
+        self.storage.addToDatabase(self.tasks)
+
+#---------------------------------------------------------------------
+# SHOW ALL TASK
+#---------------------------------------------------------------------
+    def show(self, ):
+        for task in self.tasks:    
+            print(f"""------------------------------------------------------------------------
+  Task {task["id"]}: {task["status"]}                                                  
+    Description: {task["description"]}                                                 
+    Created At: {task["created_at"]["date"]} | {task["created_at"]["time"]}             
+    Update At: {task["updated_at"]["date"]}  | {task["updated_at"]["time"]}             """)
+            print("------------------------------------------------------------------------")
+
+
+#---------------------------------------------------------------------
+# SHOW ALL TASK BASED ON STATUS INPUT
+#---------------------------------------------------------------------
+    def showTaskByStatus(self, status):
+        for task in self.tasks:  
+            if task["status"] == status:  
+                print(f"""------------------------------------------------------------------------
+  Task {task["id"]}: {task["status"]}                                                  
+    Description: {task["description"]}                                                 
+    Created At: {task["created_at"]["date"]} | {task["created_at"]["time"]}             
+    Update At: {task["updated_at"]["date"]}  | {task["updated_at"]["time"]}             """)
+                print("------------------------------------------------------------------------")
+
+
+task = Task()
 while True:
-    userInput = input("> ") # ex. add "buy grocery"
+    userInput = input("task-cli: ")
+    splitUser = shlex.split(userInput)
 
-    part = shlex.split(userInput) # ["add", "buy grocery"]
+    if not splitUser:
+        print("[Result] : Invalid Action")
 
+    elif splitUser[0].lower() == "update":
+        if len(splitUser) < 3:
+            print("[Result] : Usage: update <id> <description>")
+        else:
+            task.updateTask(int(splitUser[1]), splitUser[2])
 
-    action = part[0].lower()
-    desc = part[1]
+    elif splitUser[0].lower() == "add":
+        if len(splitUser) < 2:
+            print("[Result] : Usage: add <description>")
+        else:
+            task.addTask(splitUser[1])
 
+    elif splitUser[0].lower() == "list":
+        if len(splitUser) == 1:
+            task.show()
+        elif splitUser[1].lower() in ["done", "in-progress", "to-do"]:
+            task.showTaskByStatus(splitUser[1])
+        else:
+            print("[Result] : Invalid list option")
 
-    if action == "update" or action == "delete":
-        id = int(part[1])
-        if action == "delete":
-            deleteTask(id)
-        updateTask(id, desc)
+    else:
+        print("[Result] : Invalid Action")
 
-    if action == "add":
-        createTask(desc)
-
-    if action == "list":
-        if desc == "done" or desc == "to-do" or "in-progress":
-            showlists(desc)
-
-        showlists(action)
 
