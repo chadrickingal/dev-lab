@@ -1,290 +1,50 @@
 [
     {
-        "accountNumber": 8734534184,
+        "accountNumber": 3235613311,
         "fullName": {
-            "firstName": "Juan",
-            "middleName": "Santos",
-            "lastName": "Dela Cruz",
-            "extraName": "Jr."
+            "firstName": "John",
+            "middleName": "Reyes",
+            "lastName": "Doe",
+            "extraName": " "
         },
-        "accountType": "Checking",
-        "username": "juan01",
-        "password": "Juan@123",
+        "accountType": "Savings",
+        "username": "John23",
+        "password": "John2312",
         "createdAt": {
-            "time": "23:56:43 PM",
-            "date": "October 04, 2026"
+            "time": "17:29:49 PM",
+            "date": "October 05, 2026"
         },
-        "transactionHistory": [],
-        "balance": 1900
-    },
-    {
-        "accountNumber": 1977845868,
-        "fullName": {
-            "firstName": "Juan",
-            "middleName": "Santos",
-            "lastName": "Dela Cruz",
-            "extraName": "Jr."
-        },
-        "accountType": "Checking",
-        "username": "juan01",
-        "password": "Juan@123",
-        "createdAt": {
-            "time": "23:57:58 PM",
-            "date": "October 04, 2026"
-        },
-        "transactionHistory": [],
-        "balance": 2100
-    },
-    {
-        "accountNumber": 5961024982,
-        "fullName": {
-            "firstName": "Juan",
-            "middleName": "Santos",
-            "lastName": "Dela Cruz",
-            "extraName": "Jr."
-        },
-        "accountType": "Checking",
-        "username": "juan01",
-        "password": "Juan@123",
-        "createdAt": {
-            "time": "23:58:02 PM",
-            "date": "October 04, 2026"
-        },
-        "transactionHistory": [],
+        "transactionHistory": [
+            {
+                "id": 22,
+                "type": "Cheking Balance",
+                "date": "October 05, 2026"
+            },
+            {
+                "id": 22,
+                "type": "Deposit",
+                "amount": 0,
+                "date": "October 05, 2026"
+            }
+        ],
         "balance": 0
     },
     {
-        "accountNumber": 4840295774,
+        "accountNumber": 2120311405,
         "fullName": {
-            "firstName": "Juan",
+            "firstName": "Anna",
             "middleName": "Santos",
-            "lastName": "Dela Cruz",
-            "extraName": "Jr."
+            "lastName": "Loe",
+            "extraName": " "
         },
-        "accountType": "Checking",
-        "username": "juan01",
-        "password": "Juan@123",
+        "accountType": "Savings",
+        "username": "Anna34",
+        "password": "annas",
         "createdAt": {
-            "time": "23:58:03 PM",
-            "date": "October 04, 2026"
-        },
-        "transactionHistory": [],
-        "balance": 0
-    },
-    {
-        "accountNumber": 4448251434,
-        "fullName": {
-            "firstName": "Juan",
-            "middleName": "Santos",
-            "lastName": "Dela Cruz",
-            "extraName": "Jr."
-        },
-        "accountType": "Checking",
-        "username": "juan01",
-        "password": "Juan@123",
-        "createdAt": {
-            "time": "23:58:04 PM",
-            "date": "October 04, 2026"
-        },
-        "transactionHistory": [],
-        "balance": 0
-    },
-    {
-        "accountNumber": 2539299155,
-        "fullName": {
-            "firstName": "Juan",
-            "middleName": "Santos",
-            "lastName": "Dela Cruz",
-            "extraName": "Jr."
-        },
-        "accountType": "Checking",
-        "username": "juan01",
-        "password": "Juan@123",
-        "createdAt": {
-            "time": "00:06:33 AM",
+            "time": "17:30:21 PM",
             "date": "October 05, 2026"
         },
         "transactionHistory": [],
-        "balance": 0
-    },
-    {
-        "accountNumber": 3027892886,
-        "fullName": {
-            "firstName": "Juan",
-            "middleName": "Santos",
-            "lastName": "Dela Cruz",
-            "extraName": "Jr."
-        },
-        "accountType": "Checking",
-        "username": "juan01",
-        "password": "Juan@123",
-        "createdAt": {
-            "time": "00:06:54 AM",
-            "date": "October 05, 2026"
-        },
-        "transactionHistory": [],
-        "balance": 0
-    },
-    {
-        "accountNumber": 3863240252,
-        "fullName": {
-            "firstName": "Juan",
-            "middleName": "Santos",
-            "lastName": "Dela Cruz",
-            "extraName": "Jr."
-        },
-        "accountType": "Checking",
-        "username": "juan01",
-        "password": "Juan@123",
-        "createdAt": {
-            "time": "00:09:16 AM",
-            "date": "October 05, 2026"
-        },
-        "transactionHistory": [],
-        "balance": 0
-    },
-    {
-        "accountNumber": 3897908014,
-        "fullName": {
-            "firstName": "Juan",
-            "middleName": "Santos",
-            "lastName": "Dela Cruz",
-            "extraName": "Jr."
-        },
-        "accountType": "Checking",
-        "username": "juan01",
-        "password": "Juan@123",
-        "createdAt": {
-            "time": "00:09:26 AM",
-            "date": "October 05, 2026"
-        },
-        "transactionHistory": [],
-        "balance": 0
-    },
-    {
-        "accountNumber": 2339832051,
-        "fullName": {
-            "firstName": "Juan",
-            "middleName": "Santos",
-            "lastName": "Dela Cruz",
-            "extraName": "Jr."
-        },
-        "accountType": "Checking",
-        "username": "juan01",
-        "password": "Juan@123",
-        "createdAt": {
-            "time": "00:09:52 AM",
-            "date": "October 05, 2026"
-        },
-        "transactionHistory": [],
-        "balance": 0
-    },
-    {
-        "accountNumber": 4920228736,
-        "fullName": {
-            "firstName": "Juan",
-            "middleName": "Santos",
-            "lastName": "Dela Cruz",
-            "extraName": "Jr."
-        },
-        "accountType": "Checking",
-        "username": "juan01",
-        "password": "Juan@123",
-        "createdAt": {
-            "time": "00:14:43 AM",
-            "date": "October 05, 2026"
-        },
-        "transactionHistory": [],
-        "balance": 0
-    },
-    {
-        "accountNumber": 9639779086,
-        "fullName": {
-            "firstName": "Juan",
-            "middleName": "Santos",
-            "lastName": "Dela Cruz",
-            "extraName": "Jr."
-        },
-        "accountType": "Checking",
-        "username": "juan01",
-        "password": "Juan@123",
-        "createdAt": {
-            "time": "00:27:11 AM",
-            "date": "October 05, 2026"
-        },
-        "transactionHistory": [],
-        "balance": 0
-    },
-    {
-        "accountNumber": 6087171878,
-        "fullName": {
-            "firstName": "Juan",
-            "middleName": "Santos",
-            "lastName": "Dela Cruz",
-            "extraName": "Jr."
-        },
-        "accountType": "Checking",
-        "username": "juan01",
-        "password": "Juan@123",
-        "createdAt": {
-            "time": "00:28:51 AM",
-            "date": "October 05, 2026"
-        },
-        "transactionHistory": [],
-        "balance": 0
-    },
-    {
-        "accountNumber": 4906686441,
-        "fullName": {
-            "firstName": "Juan",
-            "middleName": "Santos",
-            "lastName": "Dela Cruz",
-            "extraName": "Jr."
-        },
-        "accountType": "Checking",
-        "username": "juan01",
-        "password": "Juan@123",
-        "createdAt": {
-            "time": "00:29:09 AM",
-            "date": "October 05, 2026"
-        },
-        "transactionHistory": [],
-        "balance": 0
-    },
-    {
-        "accountNumber": 5967252641,
-        "fullName": {
-            "firstName": "Juan",
-            "middleName": "Santos",
-            "lastName": "Dela Cruz",
-            "extraName": "Jr."
-        },
-        "accountType": "Checking",
-        "username": "juan01",
-        "password": "Juan@123",
-        "createdAt": {
-            "time": "00:29:27 AM",
-            "date": "October 05, 2026"
-        },
-        "transactionHistory": [],
-        "balance": 0
-    },
-    {
-        "accountNumber": 3581957678,
-        "fullName": {
-            "firstName": "Juan",
-            "middleName": "Santos",
-            "lastName": "Dela Cruz",
-            "extraName": "Jr."
-        },
-        "accountType": "Checking",
-        "username": "juan01",
-        "password": "Juan@123",
-        "createdAt": {
-            "time": "00:29:44 AM",
-            "date": "October 05, 2026"
-        },
-        "transactionHistory": [],
-        "balance": 0
+        "balance": 15000
     }
 ]

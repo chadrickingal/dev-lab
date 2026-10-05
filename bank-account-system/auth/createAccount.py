@@ -19,7 +19,7 @@ class CreateAccount:
         self.storage = Database()
         self.accounts = self.storage.loadAccounts()
 
-    def newAccounts(self,accountType, username, password, firstName,lastName, middleName=" ", extraName=" "):
+    def newAccounts(self,accountType, username, password, firstName,lastName, middleName=" ", extraName=" ", transactionHistory = []):
         accountNumber = random.randint(1000000000, 9999999999)
         newAccount = {
             "accountNumber": accountNumber,
@@ -36,11 +36,10 @@ class CreateAccount:
                 "time": DateTimeFromatted.currentTime(),
                 "date": DateTimeFromatted.currentDate()
             },
-            "transactionHistory": [],
+            "transactionHistory": transactionHistory,
             "balance": 0
         }
         self.accounts.append(newAccount)
-
         self.storage.addToStorage(self.accounts)
 
     def forgotPassword(self):
